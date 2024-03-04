@@ -1,0 +1,11 @@
+.main-home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.home-cards{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 1rem;
+}
