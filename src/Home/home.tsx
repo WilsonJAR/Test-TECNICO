@@ -1,9 +1,9 @@
 
 import { useState, useEffect } from "react";
 import allCharacter from "../data/cardData";
-import './home.css'
 import { Card } from "primereact/card";
-import imagen from '../assets/fondo rick 1.svg'
+import { Title, HeaderHome, CardDisplay, InfoText } from "../styles";
+
 
         
 const Home = () => {
@@ -26,21 +26,21 @@ const Home = () => {
 
     return ( 
         <div className="content">
-            <main className="main-home">
-                <div className="main-title">
-                    <h1>Personajes</h1>
-                </div>
+              <HeaderHome>
+                <Title>Personajes</Title>
+    
+              </HeaderHome>
+                
                 <section>
-                    <div className="home-cards">
+                    <CardDisplay>
                         {characters.map((data, key)=>(
                         <Card title={data.name} subTitle={data.status} header={()=>(<img src={data.image}/>)} className="md:w-25rem">
-                          <p className="desripition">{data.species}</p>
-                          <p className="type">{data.type}</p>
+                          <InfoText className="desripition">Species: {data.species}</InfoText>
+                          <InfoText className="type">Type: {data.type}</InfoText>
                         </Card>
                         ))}
-                    </div>
+                    </CardDisplay>
                 </section>
-            </main>
         </div>
      );
 }
