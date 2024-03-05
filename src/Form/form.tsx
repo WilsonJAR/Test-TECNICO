@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form"
 import { InputText } from 'primereact/inputtext'
 import {Button} from 'primereact/button'
 import useLocalstorage from "../hooks/useLocalStorage"
+import { Formulario, Title, HeaderHome } from "../styles"
 
 const Form = () => {
 
@@ -17,34 +18,44 @@ const Form = () => {
     return ( 
        <div>
         <header>
-            <form 
+            <HeaderHome >
+                <Title style={{margin: "0 auto"}}>Formulario de registro</Title>
+            </HeaderHome>
+      
+            <Formulario 
             onSubmit={handleSubmit((data)=>{
                 agregarObjeto(data)
             })}
             >
+
                 <InputText 
+                className="p-inputtext-lg"
                 {...register ("user", {required: "required"}) }
                 placeholder="Nombre"
                 />
                 <p>{errors.user?.message}</p>
 
                 <InputText 
+                className="p-inputtext-lg"
                 {...register ("lastName", {required: "required"}) }
-                placeholder="Nombre"
+                placeholder="Apellido"
                 />
                 <InputText 
+                className="p-inputtext-lg"
                 {...register ("phoneNumber", {required: "required"}) }
                 placeholder="Telefono"
                 />
 
                 <InputText 
+                className="p-inputtext-lg"
+                type="date"
                 {...register ("birthdate", {required: "required"}) }
                 placeholder="Fecha_nac"
                 />
 
-                <Button type="submit">Enviar</Button> 
+                <Button label="Submit" icon="pi pi-check" iconPos="right" />
                 
-            </form>
+            </Formulario>
         </header>
        </div>
      );

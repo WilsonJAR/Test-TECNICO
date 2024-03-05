@@ -1,11 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
+import { LinkButton, HeaderMenu } from "../styles";
 const Menu = () => {
+    const navigate = useNavigate();
     return ( 
     <header className="home-header">
-        <div className="home-menu">
-            <Link to={'/'}>Home</Link>
-            <Link to={'/table'}>Registros</Link>
-        </div>
+        <HeaderMenu>
+            <LinkButton onClick={()=>navigate('/')}>Home</LinkButton>
+            <LinkButton onClick={()=>navigate('/table')}>Registros</LinkButton>
+            <LinkButton onClick={()=>navigate('/form')}>Form</LinkButton>
+        </HeaderMenu>
     </header>
      );
 }
