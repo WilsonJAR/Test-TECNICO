@@ -1,44 +1,48 @@
 import { useForm } from "react-hook-form"
 import { InputText } from 'primereact/inputtext'
 import {Button} from 'primereact/button'
-        
+import useLocalstorage from "../hooks/useLocalStorage"
 
-const Form = ({saveData}) => {
+const Form = () => {
 
     const {register, handleSubmit, formState:{errors}} = useForm({defaultValues:{
         user: "",
-        password: ""
+        lastName: "",
+        phoneNumber: "",
+        birthdate: ""
+
     }});
-    
+    const {agregarObjeto} = useLocalstorage("usuario")
+
     return ( 
        <div>
         <header>
-            <form
+            <form 
             onSubmit={handleSubmit((data)=>{
-                console.log(data);
+                agregarObjeto(data)
             })}
             >
                 <InputText 
                 {...register ("user", {required: "required"}) }
-                placeholder="User Name"
+                placeholder="Nombre"
                 />
                 <p>{errors.user?.message}</p>
-                
+
                 <InputText 
-                {...register ("password", 
-                {required: "required",
-                minLength: {
-                    value: 8,
-                    message: "Minimum 8 characters"
-                }
-            }) }
-                placeholder="Password"
+                {...register ("lastName", {required: "required"}) }
+                placeholder="Nombre"
+                />
+                <InputText 
+                {...register ("phoneNumber", {required: "required"}) }
+                placeholder="Telefono"
                 />
 
-                <Button type="submit">Enviar</Button>
+                <InputText 
+                {...register ("birthdate", {required: "required"}) }
+                placeholder="Fecha_nac"
+                />
 
-
-
+                <Button type="submit">Enviar</Button> 
                 
             </form>
         </header>
@@ -47,3 +51,6 @@ const Form = ({saveData}) => {
 }
  
 export default Form;
+
+
+

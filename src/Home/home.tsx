@@ -2,6 +2,8 @@
 import { useState, useEffect } from "react";
 import allCharacter from "../data/cardData";
 import './home.css'
+import { Card } from "primereact/card";
+import imagen from '../assets/fondo rick 1.svg'
 
         
 const Home = () => {
@@ -20,6 +22,7 @@ const Home = () => {
     fetchData();
   }, []);
 
+  console.log(characters)
 
     return ( 
         <div className="content">
@@ -30,15 +33,11 @@ const Home = () => {
                 <section>
                     <div className="home-cards">
                         {characters.map((data, key)=>(
-                        <div key={key.id} className="home-card">
-                            <img src={data.image} alt="" />
-                            <h1 className="title">{data.name}</h1>
-                            <h2 className="subtitle">{data.status}</h2>
-                            <p className="desripition">{data.species}</p>
-                            <p className="type">{data.type}</p>
-                        </div>
+                        <Card title={data.name} subTitle={data.status} header={()=>(<img src={data.image}/>)} className="md:w-25rem">
+                          <p className="desripition">{data.species}</p>
+                          <p className="type">{data.type}</p>
+                        </Card>
                         ))}
-
                     </div>
                 </section>
             </main>
