@@ -10,12 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "async-executor-hook": "^0.1.6",
     "axios": "^1.6.7",
     "primereact": "^10.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.0",
     "react-router-dom": "^6.22.2",
+    "rectangular-forms": "^1.0.27",
+    "rxjs": "^7.8.1",
     "styled-components": "^6.1.8"
   },
   "devDependencies": {
